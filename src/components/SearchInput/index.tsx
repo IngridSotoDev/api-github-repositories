@@ -1,15 +1,14 @@
 import { useState } from "react";
-import { useUser } from "../../hooks/useUser";
 import { FiSearch } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 import { Container } from "./styles";
 
 export function SearchInput() {
-  const { getUser } = useUser();
-
+  const navigate = useNavigate()
   const [user, setUser] = useState("");
 
   async function handleSearchUser() {
-    await getUser(user)
+    navigate(`/user/${user}`);
   }
 
   return (

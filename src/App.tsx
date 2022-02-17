@@ -4,21 +4,22 @@ import { Search } from "./pages/Search";
 import { User } from "./pages/User";
 import { Footer } from "./components/Footer";
 import { GlobalStyle } from "./styles/global";
-import { UserProvider } from "./hooks/useUser";
+import { Header } from "./components/Header";
 
 export function App() {
   return (
     <BrowserRouter>
-      <UserProvider>
-        <Routes>
-          <Route path="/" element={<Search />} />
-          <Route path="/user/:user" element={<User />} />
-        </Routes>
+      <Header />
 
-        <ToastContainer autoClose={3000} />
-        <Footer />
-        <GlobalStyle />
-      </UserProvider>
+      <Routes>
+        <Route path="/" element={<Search />} />
+        <Route path="/user/:user" element={<User />} />
+      </Routes>
+
+      <Footer />
+
+      <ToastContainer autoClose={3000} />
+      <GlobalStyle />
     </BrowserRouter>
   );
 }

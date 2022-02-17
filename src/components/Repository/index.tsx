@@ -1,12 +1,23 @@
-import { Container } from "./styles";
+import { RepositoryItem } from "./styles";
+interface RepositoryProps {
+  full_name: String;
+  html_url: string;
+  description: String;
+  language: String;
+}
 
-export function Repository() {
-
-  // ITEM RESPOSITORIES
-
+export function Repository({
+  full_name,
+  html_url,
+  description,
+  language,
+}: RepositoryProps) {
+  
   return (
-    <Container>
-      <h1>Repository</h1>
-    </Container>
-  )
+    <RepositoryItem>
+      <a href={html_url}>{full_name}</a>
+      {description && <p>{description}</p>}
+      <p>{language}</p>
+    </RepositoryItem>
+  );
 }

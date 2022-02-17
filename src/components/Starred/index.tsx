@@ -1,9 +1,24 @@
-import { Container } from "./styles";
+import { StarredItem } from "./styles";
 
-export function Starred() {
+interface StarredProps {
+  full_name: String;
+  html_url: string;
+  description: String;
+  language: String;
+}
+
+export function Starred({
+  full_name,
+  html_url,
+  description,
+  language,
+}: StarredProps) {
+  
   return (
-    <Container>
-      <h1>Starred</h1>
-    </Container>
-  )
+    <StarredItem>
+      <a href={html_url}>{full_name}</a>
+      {description && <p>{description}</p>}
+      <p>{language}</p>
+    </StarredItem>
+  );
 }
