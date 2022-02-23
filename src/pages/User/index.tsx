@@ -15,7 +15,7 @@ type Params = {
   user: string;
 };
 
-type User = {
+type UserData = {
   login: String;
   name: string;
   bio: String;
@@ -26,35 +26,29 @@ type User = {
 };
 
 export function User() {
-  const params = useParams<Params>();
-  const userName = params.user;
-  const [user, setUser] = useState({} as User);
+  const { user } = useParams<Params>();
+  const [userData, setUserData] = useState({} as UserData);
   const [showUser, setShowUser] = useState(false);
-  const [showRepos, setShowRepos] = useState(false);
-  const [showStarred, setShowStarred] = useState(false);
+  const [showRepos, setShowRepos] = useState<boolean>();
   const [notFound, setNotFound] = useState(false);
+  console.log(showRepos);
+  
 
-  useEffect(() => {
+  useEffect( () => {
     api
-      .get(`${userName}`)
+      .get(`${user}`)
       .then((response) => {
-        setUser(response.data);
+        setUserData(response.data);
         setNotFound(false);
-        setShowUser(true)
+        setShowUser(true);
       })
       .catch((error) => {
         setNotFound(true);
       });
   }, [setNotFound, setShowUser]);
 
-  async function handleUserRepositories() {
-    setShowStarred(false);
-    setShowRepos(true);
-  }
-
-  async function handleUserStarred() {
-    setShowRepos(false);
-    setShowStarred(true);
+  function handleShowRepos(value = false) {
+    setShowRepos(value);
   }
 
   return (
@@ -66,33 +60,32 @@ export function User() {
       {showUser && (
         <Container>
           <UserInformations>
-            <img src={user.avatar_url} alt={user.name} />
+            <img src={userData.avatar_url} alt={userData.name} />
 
-            <h1>{user.name || "Sem nome"}</h1>
-            <a href={user.html_url} target="_blank">
-              @{user.login}
+            <h1>{userData.name || "Sem nome"}</h1>
+            <a href={userData.html_url} target="_blank">
+              @{userData.login}
             </a>
-            {user.bio && <p>{user.bio}</p>}
-            {user.location && <p>{user.location}</p>}
+            <p>{userData?.bio ?? ''}</p>
+            {userData.location && <p>{userData.location}</p>}
 
             <ActionsButtons>
               <button
                 className="btn-repositories"
-                onClick={handleUserRepositories}
+                onClick={() => handleShowRepos(true)}
               >
                 <GoRepo />
                 <span>Repositórios</span>
               </button>
 
-              <button className="btn-starred" onClick={handleUserStarred}>
+              <button className="btn-starred" onClick={() => handleShowRepos(false)}>
                 <GoStar />
                 <span>Favoritos</span>
               </button>
             </ActionsButtons>
           </UserInformations>
 
-          {showRepos && <RepositoriesList />}
-          {showStarred && <StarredList />}
+          {showRepos == undefined ? '' : showRepos ?  <RepositoriesList /> : <StarredList />}
         </Container>
       )}
 

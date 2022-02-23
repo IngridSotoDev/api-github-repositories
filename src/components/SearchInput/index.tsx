@@ -9,7 +9,7 @@ export function SearchInput() {
   const [user, setUser] = useState("");
 
   async function handleSearchUser() {
-    navigate(`/${user}`);
+    navigate(`/user/${user}`);
   }
 
   function handleKeypress(event: KeyboardEvent<HTMLInputElement>) {
