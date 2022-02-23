@@ -1,8 +1,7 @@
+import { KeyboardEvent } from 'react';
 import { useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
-import { Footer } from "../Footer";
-import { Header } from "../Header";
 import { Container } from "./styles";
 
 export function SearchInput() {
@@ -10,7 +9,13 @@ export function SearchInput() {
   const [user, setUser] = useState("");
 
   async function handleSearchUser() {
-    navigate(`/user/${user}`);
+    navigate(`/${user}`);
+  }
+
+  function handleKeypress(event: KeyboardEvent<HTMLInputElement>) {
+    if (event.key === "Enter") {
+      handleSearchUser();
+    }
   }
 
   return (
@@ -19,6 +24,7 @@ export function SearchInput() {
         placeholder="Digite o nome do usuário"
         value={user}
         onChange={(event) => setUser(event.target.value)}
+        onKeyPress={handleKeypress}
       />
       <button onClick={handleSearchUser}>
         <FiSearch />

@@ -11,7 +11,7 @@ export function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Search />} />
-        <Route path="/user/:user" element={<User />} />
+        <Route path="/:user" element={<User />} />
       </Routes>
 
       <ToastContainer autoClose={3000} />
