@@ -4,6 +4,8 @@ export const Container = styled.div`
   width: 100%;
   background: var(--yellow);
   padding: 1rem 0;
+  position: fixed;
+  bottom: 0;
 
   p {
     text-align: center;

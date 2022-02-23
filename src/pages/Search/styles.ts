@@ -4,10 +4,11 @@ export const Container = styled.div`
   max-width: 128rem;
   width: 90%;
   margin: 5rem auto;
-  flex: 1;
+  height: auto;
   display: flex;
   flex-direction: column;
   position: relative;
+  flex: 1;
 
   > h1 {
     color: var(--light);
@@ -17,9 +18,21 @@ export const Container = styled.div`
   }
 
   > img {
-    height: 400px;
-    position: absolute;
-    right: 0;
-    bottom: 0;
+    height: 40rem;
+    position: fixed;
+    right: 4rem;
+    bottom: 4rem;
+  }
+
+  @media (max-height: 900px) {
+    img {
+      height: 30rem;
+    }
+  }
+
+  @media (max-height: 667px) {
+    img {
+      height: 25rem;
+    }
   }
 `;

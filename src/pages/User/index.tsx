@@ -6,6 +6,7 @@ import { GoRepo, GoStar } from "react-icons/go";
 import { toast } from "react-toastify";
 
 import { Header } from "../../components/Header";
+import { Footer } from "../../components/Footer";
 import { RepositoriesList } from "../../components/RepositoriesList";
 import { StarredList } from "../../components/StarredList";
 import { ActionsButtons, Container, UserInformations } from "./styles";
@@ -24,11 +25,7 @@ type User = {
   avatar_url: string;
 };
 
-interface UserProps {
-  back: (value: Boolean) => void;
-}
-
-export function User({ back }: UserProps) {
+export function User() {
   const params = useParams<Params>();
   const userName = params.user;
   const [user, setUser] = useState({} as User);
@@ -37,7 +34,6 @@ export function User({ back }: UserProps) {
   // const [userNotFound, setUserNotFound] = useState(true);
 
   useEffect(() => {
-    back(true);
     api
       .get(`${userName}`)
       .then((response) => {
@@ -61,33 +57,40 @@ export function User({ back }: UserProps) {
   }
 
   return (
-    <Container>
-      <UserInformations>
-        <img src={user.avatar_url} alt={user.name} />
+    <>
+      <Header backToHome={true} />
+      <Container>
+        <UserInformations>
+          <img src={user.avatar_url} alt={user.name} />
 
-        <h1>{user.name || "Sem nome"}</h1>
-        <a href={user.html_url} target="_blank">
-          @{user.login}
-        </a>
-        {user.bio && <p>{user.bio}</p>}
-        {user.location && <p>{user.location}</p>}
+          <h1>{user.name || "Sem nome"}</h1>
+          <a href={user.html_url} target="_blank">
+            @{user.login}
+          </a>
+          {user.bio && <p>{user.bio}</p>}
+          {user.location && <p>{user.location}</p>}
 
-        <ActionsButtons>
-          <button className="btn-repositories" onClick={handleUserRepositories}>
-            <GoRepo />
-            <span>Repositórios</span>
-          </button>
+          <ActionsButtons>
+            <button
+              className="btn-repositories"
+              onClick={handleUserRepositories}
+            >
+              <GoRepo />
+              <span>Repositórios</span>
+            </button>
 
-          <button className="btn-starred" onClick={handleUserStarred}>
-            <GoStar />
-            <span>Favoritos</span>
-          </button>
-        </ActionsButtons>
-      </UserInformations>
-      {/* TODO view notFound */}
-      {/* {userNotFound && ""} */}
-      {showRepos && <RepositoriesList />}
-      {showStarred && <StarredList />}
-    </Container>
+            <button className="btn-starred" onClick={handleUserStarred}>
+              <GoStar />
+              <span>Favoritos</span>
+            </button>
+          </ActionsButtons>
+        </UserInformations>
+        {/* TODO view notFound */}
+        {/* {userNotFound && ""} */}
+        {showRepos && <RepositoriesList />}
+        {showStarred && <StarredList />}
+      </Container>
+      <Footer />
+    </>
   );
 }

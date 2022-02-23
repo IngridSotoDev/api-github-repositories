@@ -38,14 +38,7 @@ export const GlobalStyle = createGlobalStyle`
     /* font-family: "Poppins", sans-serif; */
     background: var(--bg-blue);
   }
-
-  #root {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-
-  }
-
+  
   .sr-only {
     position: absolute;
     height: 1px;

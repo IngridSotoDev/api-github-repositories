@@ -28,6 +28,7 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     color: var(--light);
+    width: auto;
 
     svg {
       width: 1.6rem;
@@ -36,6 +37,17 @@ export const Container = styled.div`
 
     span {
       margin-left: 1rem;
+      visibility: visible;
+      opacity: 1;
+    }
+
+    @media (max-width: 390px) {
+      span {
+        visibility: hidden;
+        opacity: 0;
+        width: 1px;
+        margin: 0;
+      }
     }
   }
 `;

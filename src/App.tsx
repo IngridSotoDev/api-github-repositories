@@ -9,18 +9,12 @@ import { Header } from "./components/Header";
 
 export function App() {
 
-  const [backButton, setBackButton] = useState<Boolean>(false)
-
-  return (
+ return (
     <BrowserRouter>
-      <Header back={backButton} setBack={setBackButton}/>
-
       <Routes>
         <Route path="/" element={<Search />} />
-        <Route path="/user/:user" element={<User back={setBackButton} />} />
+        <Route path="/user/:user" element={<User />} />
       </Routes>
-
-      <Footer />
 
       <ToastContainer autoClose={3000} />
       <GlobalStyle />

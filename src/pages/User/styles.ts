@@ -8,6 +8,10 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 6rem;
+
+  @media(max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const UserInformations = styled.div`

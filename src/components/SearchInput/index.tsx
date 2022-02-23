@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+import { Footer } from "../Footer";
+import { Header } from "../Header";
 import { Container } from "./styles";
 
 export function SearchInput() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [user, setUser] = useState("");
 
   async function handleSearchUser() {
