@@ -1,8 +1,8 @@
 import peopleSearchImg from "../../assets/svg/people-search.svg";
-import { Container } from "./styles";
+import { Header } from "../../components/Header";
 import { SearchInput } from "../../components/SearchInput";
 import { Footer } from "../../components/Footer";
-import { Header } from "../../components/Header";
+import { Container } from "./styles";
 
 export function Search() {
   return (
@@ -13,7 +13,7 @@ export function Search() {
 
         <SearchInput />
 
-        <img src={peopleSearchImg} alt="" />
+        <img src={peopleSearchImg} alt="Mulher pesquisando usuário" />
       </Container>
       <Footer />
     </>

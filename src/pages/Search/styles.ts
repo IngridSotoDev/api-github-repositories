@@ -24,7 +24,7 @@ export const Container = styled.div`
     bottom: 4rem;
   }
 
-  @media (max-height: 900px) {
+  @media (max-height: 920px) {
     img {
       height: 30rem;
     }
@@ -33,6 +33,11 @@ export const Container = styled.div`
   @media (max-height: 667px) {
     img {
       height: 25rem;
+    }
+  }
+  @media (max-height: 620px) {
+    img {
+      height: 0;
     }
   }
 `;

@@ -21,7 +21,7 @@ export const RepositoryItem = styled.li`
   }
 
   p {
-    color: white;
+    color: var(--light);
     font-weight: 300;
     font-size: 1.4rem;
   }
