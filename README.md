@@ -13,6 +13,7 @@ API de pesquisa de usuários do GitHub.
 # 🚀 Techs
 * React
 * React-DOM
+* React-Toastify
 * Styled-Components
 * Typescript
 * Axios

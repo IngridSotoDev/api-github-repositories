@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { api } from "../../services/api";
 
 import { GoRepo, GoStar } from "react-icons/go";
-import { toast } from "react-toastify";
 
 import { Header } from "../../components/Header";
 import { RepositoriesList } from "../../components/RepositoriesList";
 import { StarredList } from "../../components/StarredList";
+import { UserNotFound } from "../../components/UserNotFound";
 import { Footer } from "../../components/Footer";
 import { ActionsButtons, Container, UserInformations } from "./styles";
-import { UserNotFound } from "../../components/UserNotFound";
 
 type Params = {
   user: string;
