@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { Search } from "./pages/Search";
@@ -7,13 +8,16 @@ import { GlobalStyle } from "./styles/global";
 import { Header } from "./components/Header";
 
 export function App() {
+
+  const [backButton, setBackButton] = useState<Boolean>(false)
+
   return (
     <BrowserRouter>
-      <Header />
+      <Header back={backButton} setBack={setBackButton}/>
 
       <Routes>
         <Route path="/" element={<Search />} />
-        <Route path="/user/:user" element={<User />} />
+        <Route path="/user/:user" element={<User back={setBackButton} />} />
       </Routes>
 
       <Footer />

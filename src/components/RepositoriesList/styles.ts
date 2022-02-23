@@ -16,6 +16,6 @@ export const Container = styled.div`
   ul {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 3rem;
   }
 `;

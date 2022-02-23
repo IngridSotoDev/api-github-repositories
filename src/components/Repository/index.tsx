@@ -15,9 +15,9 @@ export function Repository({
   
   return (
     <RepositoryItem>
-      <a href={html_url}>{full_name}</a>
+      <a href={html_url} target="_blank">{full_name}</a>
       {description && <p>{description}</p>}
-      <p>{language}</p>
+      <p className="languageItem">{language}</p>
     </RepositoryItem>
   );
 }

@@ -53,13 +53,13 @@ export const ActionsButtons = styled.div`
   margin-top: 2rem;
 
   button {
-    min-width: 20rem;
+    min-width: 15rem;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--light);
     height: 4rem;
-    padding: 0 2.4rem;
+    padding: 0 1.8rem;
     border-radius: 0.25rem;
     transition: filter 0.2s;
 

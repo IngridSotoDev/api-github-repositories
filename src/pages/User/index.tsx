@@ -14,7 +14,7 @@ type Params = {
   user: string;
 };
 
-interface User {
+type User = {
   login: String;
   name: string;
   bio: String;
@@ -22,23 +22,30 @@ interface User {
   location: String;
   html_url: string;
   avatar_url: string;
+};
+
+interface UserProps {
+  back: (value: Boolean) => void;
 }
 
-export function User() {
+export function User({ back }: UserProps) {
   const params = useParams<Params>();
   const userName = params.user;
-  const navigate = useNavigate();
   const [user, setUser] = useState({} as User);
   const [showRepos, setShowRepos] = useState(false);
   const [showStarred, setShowStarred] = useState(false);
+  // const [userNotFound, setUserNotFound] = useState(true);
 
   useEffect(() => {
+    back(true);
     api
       .get(`${userName}`)
       .then((response) => {
         setUser(response.data);
+        // setUserNotFound(false)
       })
       .catch((error) => {
+        // setUserNotFound(true)
         toast.error("Usuário não encontrado");
       });
   }, []);
@@ -77,7 +84,8 @@ export function User() {
           </button>
         </ActionsButtons>
       </UserInformations>
-
+      {/* TODO view notFound */}
+      {/* {userNotFound && ""} */}
       {showRepos && <RepositoriesList />}
       {showStarred && <StarredList />}
     </Container>
