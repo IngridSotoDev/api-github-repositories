@@ -31,10 +31,8 @@ export function User() {
   const [showUser, setShowUser] = useState(false);
   const [showRepos, setShowRepos] = useState<boolean>();
   const [notFound, setNotFound] = useState(false);
-  console.log(showRepos);
-  
 
-  useEffect( () => {
+  useEffect(() => {
     api
       .get(`${user}`)
       .then((response) => {
@@ -45,7 +43,7 @@ export function User() {
       .catch((error) => {
         setNotFound(true);
       });
-  }, [setNotFound, setShowUser]);
+  }, [user]);
 
   function handleShowRepos(value = false) {
     setShowRepos(value);
@@ -66,7 +64,7 @@ export function User() {
             <a href={userData.html_url} target="_blank">
               @{userData.login}
             </a>
-            <p>{userData?.bio ?? ''}</p>
+            <p>{userData?.bio ?? ""}</p>
             {userData.location && <p>{userData.location}</p>}
 
             <ActionsButtons>
@@ -78,14 +76,23 @@ export function User() {
                 <span>Repositórios</span>
               </button>
 
-              <button className="btn-starred" onClick={() => handleShowRepos(false)}>
+              <button
+                className="btn-starred"
+                onClick={() => handleShowRepos(false)}
+              >
                 <GoStar />
                 <span>Favoritos</span>
               </button>
             </ActionsButtons>
           </UserInformations>
 
-          {showRepos == undefined ? '' : showRepos ?  <RepositoriesList /> : <StarredList />}
+          {showRepos == undefined ? (
+            ""
+          ) : showRepos ? (
+            <RepositoriesList />
+          ) : (
+            <StarredList />
+          )}
         </Container>
       )}
 
