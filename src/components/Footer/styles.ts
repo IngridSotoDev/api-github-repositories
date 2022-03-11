@@ -12,4 +12,4 @@ export const Container = styled.div`
     font-size: 1.4rem;
     color: var(--blue-dark);
   }
-`;
+`

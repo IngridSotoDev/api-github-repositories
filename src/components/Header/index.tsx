@@ -13,7 +13,7 @@ export function Header({ backToHome }: HeaderProps) {
 
   useEffect(() => {
     return setBack(backToHome);
-  }, [setBack, backToHome]);
+  }, [backToHome, setBack]);
 
   return (
     <Container>

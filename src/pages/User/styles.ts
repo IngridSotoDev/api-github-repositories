@@ -9,7 +9,7 @@ export const Container = styled.div`
   grid-template-columns: 1fr 1fr;
   gap: 6rem;
 
-  @media (max-width: 768px) {
+  @media(max-width: 768px) {
     grid-template-columns: 1fr;
   }
 `;

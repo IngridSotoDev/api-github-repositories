@@ -12,11 +12,10 @@ export function Repository({
   description,
   language,
 }: RepositoryProps) {
+  
   return (
     <RepositoryItem>
-      <a href={html_url} target="_blank" rel="noreferrer">
-        {full_name}
-      </a>
+      <a href={html_url} target="_blank" rel="noreferrer">{full_name}</a>
       {description && <p>{description}</p>}
       <p className="languageItem">{language}</p>
     </RepositoryItem>
