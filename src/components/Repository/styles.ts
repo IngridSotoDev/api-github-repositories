@@ -32,4 +32,4 @@ export const RepositoryItem = styled.li`
     text-align: right;
     color: var(--orange);
   }
-`;
+`

@@ -61,7 +61,7 @@ export function User() {
             <img src={userData.avatar_url} alt={userData.name} />
 
             <h1>{userData.name || "Sem nome"}</h1>
-            <a href={userData.html_url} target="_blank">
+            <a href={userData.html_url} target="_blank" rel="noreferrer">
               @{userData.login}
             </a>
             <p>{userData?.bio ?? ""}</p>
@@ -86,7 +86,7 @@ export function User() {
             </ActionsButtons>
           </UserInformations>
 
-          {showRepos == undefined ? (
+          {showRepos === undefined ? (
             ""
           ) : showRepos ? (
             <RepositoriesList />

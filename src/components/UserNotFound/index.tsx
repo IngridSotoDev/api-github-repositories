@@ -7,5 +7,5 @@ export function UserNotFound() {
       <img src={feelingBlue} alt="Animação com face de tristeza" />
       <p>Usuário não encontrado!</p>
     </Container>
-  );
+  )
 }
