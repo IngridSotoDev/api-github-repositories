@@ -9,11 +9,12 @@ interface HeaderProps {
 }
 
 export function Header({ backToHome }: HeaderProps) {
-  const [back, setBack] = useState<Boolean>(false)
+  const [back, setBack] = useState<Boolean>(false);
 
   useEffect(() => {
     return setBack(backToHome);
-  }, [])
+  }, [setBack, backToHome]);
+
   return (
     <Container>
       <img src={GithubImg} alt="GitHub" />

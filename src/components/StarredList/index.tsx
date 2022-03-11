@@ -5,7 +5,7 @@ import { api } from "../../services/api";
 import { Starred } from "../Starred";
 import { Container } from "./styled";
 
-interface Starred {
+interface Starreds {
   id: Number;
   name: String;
   full_name: String;
@@ -21,24 +21,24 @@ type Params = {
 export function StarredList() {
   const params = useParams<Params>();
   const user = params.user
-  const [starred, setStarred] = useState<Starred[]>([]);
+  const [starreds, setStarreds] = useState<Starreds[]>([]);
 
   useEffect(() => {
     api
       .get(`${user}/starred`)
       .then((response) => {
-        setStarred(response.data);
+        setStarreds(response.data);
       })
       .catch((erro) => {
         toast.error("Erro ao buscar repositórios!");
       });
-  }, []);
+  }, [user]);
 
   return (
     <Container>
       <h2>Favoritos</h2>
       <ul>
-        {starred.map((starred) => {
+        {starreds.map((starred) => {
           return (
             <Starred
               key={`${starred.id}`}

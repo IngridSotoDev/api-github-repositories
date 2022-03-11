@@ -16,25 +16,23 @@ interface Repositories {
 
 type Params = {
   user: string;
-}
-
+};
 
 export function RepositoriesList() {
   const params = useParams<Params>();
-  const user = params.user
+  const user = params.user;
   const [repositories, setRepositories] = useState<Repositories[]>([]);
 
   useEffect(() => {
     api
-    .get(`${user}/repos`)
-    .then((response) => {
-      setRepositories(response.data);
-    })
-    .catch((erro) => {
-      toast.error("Erro ao buscar repositórios!");
-    });
-
-  }, [])
+      .get(`${user}/repos`)
+      .then((response) => {
+        setRepositories(response.data);
+      })
+      .catch((error) => {
+        toast.error("Erro ao buscar repositórios!");
+      });
+  }, [user]);
   return (
     <Container>
       <h2>Repositórios</h2>

@@ -5,5 +5,5 @@ export function Footer() {
     <Container>
       <p>Feito com &#128150; por Ingrid Soto</p>
     </Container>
-  )
+  );
 }
