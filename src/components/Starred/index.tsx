@@ -1,10 +1,10 @@
 import { StarredItem } from "./styles";
 
 interface StarredProps {
-  full_name: String;
   html_url: string;
-  description: String;
-  language: String;
+  language: string;
+  full_name: string;
+  description: string;
 }
 
 export function Starred({

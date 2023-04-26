@@ -1,9 +1,10 @@
 import { RepositoryItem } from "./styles";
+
 interface RepositoryProps {
-  full_name: String;
+  language: string;
   html_url: string;
-  description: String;
-  language: String;
+  full_name: string;
+  description: string;
 }
 
 export function Repository({
@@ -12,10 +13,11 @@ export function Repository({
   description,
   language,
 }: RepositoryProps) {
-  
   return (
     <RepositoryItem>
-      <a href={html_url} target="_blank" rel="noreferrer">{full_name}</a>
+      <a href={html_url} target="_blank" rel="noreferrer">
+        {full_name}
+      </a>
       {description && <p>{description}</p>}
       <p className="languageItem">{language}</p>
     </RepositoryItem>
