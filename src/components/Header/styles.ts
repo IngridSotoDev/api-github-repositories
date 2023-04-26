@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.header`
   max-width: 128rem;
   width: 90%;
   margin: 0 auto;
@@ -12,14 +12,19 @@ export const Container = styled.div`
   img {
     width: 10rem;
   }
+`;
 
-  a {
-    display: flex;
-    align-items: center;
-    color: var(--orange);
+type ButtonProps = {
+  isVisible: boolean;
+};
 
-    span {
-      margin-left: 1rem;
-    }
+export const Button = styled.button<ButtonProps>`
+  display: flex;
+  align-items: center;
+  color: var(--orange);
+  visibility: ${({ isVisible }) => (isVisible ? "visible" : "hidden")};
+
+  span {
+    margin-left: 1rem;
   }
 `;

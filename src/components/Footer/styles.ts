@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.footer`
   width: 100%;
   background: var(--yellow);
   padding: 1rem 0;
@@ -12,4 +12,4 @@ export const Container = styled.div`
     font-size: 1.4rem;
     color: var(--blue-dark);
   }
-`
+`;
