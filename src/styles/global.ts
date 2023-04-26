@@ -1,21 +1,17 @@
 import { createGlobalStyle } from "styled-components";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 export const GlobalStyle = createGlobalStyle`
-
   :root {
     --bg-blue: #023047;
-
-    --blue-light: #8ECAE6;
-    --blue: #219EBC;
+    --blue-light: #8ecae6;
+    --blue: #219ebc;
     --blue-dark: #126782;
-
-    --yellow: #FFB703;
-    --orange: #FB8500;
-
-    --light: #FBFCFC;
+    --yellow: #ebb652;
+    --orange: #f79500;
+    --orange-dark: #f86400;
+    --light: #fbfcfc;
   }
-
 
   * {
     margin: 0;
@@ -25,7 +21,6 @@ export const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     font-family: "Poppins", sans-serif;
   }
-
 
   html {
     font-size: 62.5%; /* 10px */
@@ -38,18 +33,6 @@ export const GlobalStyle = createGlobalStyle`
     background: var(--bg-blue);
   }
   
-  .sr-only {
-    position: absolute;
-    height: 1px;
-    width: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip-path: rec(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
-  }
-
   button {
     cursor: pointer;
   }
