@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 import { CurrentContainer, IUser } from "./types";
 
@@ -18,6 +18,29 @@ export function HomePage() {
   const [user, setUser] = useState<IUser>();
   const [currentContainer, setCurrentContainer] =
     useState<CurrentContainer>("search");
+
+  const showBackToHome = useMemo<boolean>(
+    () => ["user", "notFound"].includes(currentContainer),
+    [currentContainer]
+  );
+
+  const Containers = {
+    loading: <Loader />,
+    search: (
+      <SearchUser
+        value={search}
+        onSearch={onSearchUser}
+        onChange={(user) => setSearch(user)}
+      />
+    ),
+    notFound: (
+      <>
+        <Img src={feelingBlue} alt="Animação com face de tristeza" />
+        <Text>Usuário não encontrado!</Text>
+      </>
+    ),
+    user: user && <User user={user} />,
+  };
 
   function handleBackToHome() {
     setSearch("");
@@ -39,30 +62,9 @@ export function HomePage() {
       });
   }
 
-  const Containers = {
-    loading: <Loader />,
-    search: (
-      <SearchUser
-        value={search}
-        onSearch={onSearchUser}
-        onChange={(user) => setSearch(user)}
-      />
-    ),
-    notFound: (
-      <>
-        <Img src={feelingBlue} alt="Animação com face de tristeza" />
-        <Text>Usuário não encontrado!</Text>
-      </>
-    ),
-    user: user && <User user={user} />,
-  };
-
   return (
     <>
-      <Header
-        onBackToHome={handleBackToHome}
-        showBackToHome={currentContainer === "user"}
-      />
+      <Header onBackToHome={handleBackToHome} showBackToHome={showBackToHome} />
       <Container>{Containers[currentContainer]}</Container>
       <Footer />
     </>
