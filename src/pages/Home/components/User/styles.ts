@@ -4,6 +4,14 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 20rem;
+
+  @media (max-width: 1024px) {
+    gap: 5rem;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 export const UserInformation = styled.div`
