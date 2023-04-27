@@ -9,3 +9,13 @@ export interface IUser {
 }
 
 export type CurrentContainer = "search" | "user" | "loading" | "notFound";
+
+export type RepositoryType = "repos" | "starred";
+
+export interface IRepository {
+  id: string;
+  language: string;
+  html_url: string;
+  full_name: string;
+  description: string;
+}
