@@ -61,7 +61,7 @@ export const Button = styled.button`
     opacity: 1;
   }
 
-  @media (max-width: 390px) {
+  @media (max-width: 425px) {
     span {
       visibility: hidden;
       opacity: 0;
@@ -72,25 +72,16 @@ export const Button = styled.button`
 `;
 
 export const Img = styled.img`
-  height: 40rem;
   position: fixed;
+  height: 40rem;
   right: 4rem;
   bottom: 4rem;
 
-  @media (max-height: 920px) {
-    img {
-      height: 30rem;
-    }
+  @media (max-width: 768px) {
+    height: 30rem;
   }
 
-  @media (max-height: 667px) {
-    img {
-      height: 25rem;
-    }
-  }
-  @media (max-height: 620px) {
-    img {
-      height: 0;
-    }
+  @media (max-height: 720px) {
+    height: 25rem;
   }
 `;
